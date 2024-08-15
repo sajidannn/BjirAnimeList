@@ -2,13 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const AnimeList = ({ api }) => {
-
   return (
     <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
-      {api.data.map((anime) => (
+      {api.data?.map((anime) => (
         <div key={anime.mal_id} className="shadow-xl">
-          <Link href={`/${anime.mal_id}`} className="cursor-pointer text-color-primary
-          hover:text-color-accent transition-all">
+          <Link
+            href={`/${anime.mal_id}`}
+            className="cursor-pointer text-color-primary
+          hover:text-color-accent transition-all"
+          >
             <Image
               priority={true}
               src={anime.images.webp.image_url}
@@ -23,15 +25,6 @@ const AnimeList = ({ api }) => {
       ))}
     </div>
   );
-}
+};
 
 export default AnimeList;
-
-
-// {anime.data.map(data => {
-//   return (
-//     <div key={data.mal_id} className="shadow-xl">
-//       <AnimeList title={data.title} images={data.images.webp.image_url} id={data.mal_id} />
-//     </div>
-//   )
-// })}
